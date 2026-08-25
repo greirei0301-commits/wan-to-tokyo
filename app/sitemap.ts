@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { facilities } from "@/lib/data";
 
-const BASE_URL = "https://example.com";
+const BASE_URL = "https://wan-to-tokyo.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/search", "/favorites"].map((path) => ({
