@@ -15,8 +15,11 @@ export default function SearchBar({ initialQuery = "" }: { initialQuery?: string
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full max-w-xl items-center gap-2 rounded-2xl border border-line bg-surface p-2 shadow-sm">
-      <svg viewBox="0 0 24 24" className="ml-2 h-5 w-5 flex-none text-ink-faint" fill="none" stroke="currentColor" strokeWidth={1.8}>
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-full max-w-xl items-center gap-2 rounded-full bg-surface p-2 pl-4 shadow-md shadow-ink/10"
+    >
+      <svg viewBox="0 0 24 24" className="h-5 w-5 flex-none text-ink-faint" fill="none" stroke="currentColor" strokeWidth={1.8}>
         <circle cx="11" cy="11" r="6.5" />
         <path strokeLinecap="round" d="m20 20-4.35-4.35" />
       </svg>
@@ -28,7 +31,7 @@ export default function SearchBar({ initialQuery = "" }: { initialQuery?: string
       />
       <button
         type="submit"
-        className="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+        className="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-primary-dark"
       >
         検索
       </button>
