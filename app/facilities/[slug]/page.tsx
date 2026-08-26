@@ -10,6 +10,7 @@ import {
 import DogConditionBadge from "@/components/DogConditionBadge";
 import FavoriteButton from "@/components/FavoriteButton";
 import MapPlaceholder from "@/components/MapPlaceholder";
+import FacilityImagePlaceholder from "@/components/FacilityImagePlaceholder";
 
 export function generateStaticParams() {
   return facilities.map((f) => ({ slug: f.slug }));
@@ -52,22 +53,17 @@ export default function FacilityDetailPage({ params }: { params: { slug: string 
         ← 検索結果に戻る
       </Link>
 
-      <div className="mb-5 grid grid-cols-2 gap-2 overflow-hidden rounded-2xl sm:grid-cols-3">
-        {facility.images.map((src, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={src}
-            src={src}
-            alt={`${facility.name}の写真${i + 1}`}
-            className={`h-48 w-full object-cover ${i === 0 ? "col-span-2 h-64 sm:col-span-2" : ""}`}
-          />
-        ))}
+      <div className="relative mb-5 overflow-hidden rounded-[28px] border-[6px] border-surface shadow-md shadow-ink/10">
+        <span className="absolute left-3 top-3 z-10 rounded-full bg-surface/90 px-3 py-1.5 text-xs font-bold text-ink">
+          🐾 サンプル画像
+        </span>
+        <FacilityImagePlaceholder category={facility.category} className="h-64 w-full sm:h-80" />
       </div>
 
       <div className="mb-2 flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-medium text-primary-dark">{CATEGORY_LABELS[facility.category]}</p>
-          <h1 className="font-display text-2xl font-bold text-ink">{facility.name}</h1>
+          <p className="text-xs font-bold text-primary-dark">{CATEGORY_LABELS[facility.category]}</p>
+          <h1 className="font-display text-2xl font-black text-ink">{facility.name}</h1>
         </div>
         <FavoriteButton facilityId={facility.id} />
       </div>
@@ -81,12 +77,12 @@ export default function FacilityDetailPage({ params }: { params: { slug: string 
 
       <p className="mb-8 text-sm leading-7 text-ink-soft">{facility.description}</p>
 
-      <div className="mb-8 overflow-hidden rounded-2xl border border-line">
+      <div className="mb-8 overflow-hidden rounded-[24px] border border-line">
         <table className="w-full text-sm">
           <tbody>
             {infoRows.map(([label, value]) => (
               <tr key={label} className="border-b border-line last:border-0">
-                <th className="w-28 bg-surface-raised px-4 py-3 text-left font-medium text-ink-faint">{label}</th>
+                <th className="w-28 bg-surface-raised px-4 py-3 text-left font-bold text-ink-faint">{label}</th>
                 <td className="px-4 py-3 text-ink">{value}</td>
               </tr>
             ))}
@@ -99,7 +95,7 @@ export default function FacilityDetailPage({ params }: { params: { slug: string 
           href={facility.websiteUrl}
           target="_blank"
           rel="noreferrer"
-          className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-primary-dark hover:underline"
+          className="mb-8 inline-flex items-center gap-1.5 rounded-full bg-sand px-5 py-2.5 text-sm font-bold text-sand-ink hover:bg-primary hover:text-white"
         >
           公式サイトを見る ↗
         </a>
